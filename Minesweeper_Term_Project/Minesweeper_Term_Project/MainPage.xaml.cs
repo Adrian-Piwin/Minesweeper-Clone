@@ -26,5 +26,10 @@ namespace Minesweeper_Term_Project
         {
             this.InitializeComponent();
         }
+
+        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

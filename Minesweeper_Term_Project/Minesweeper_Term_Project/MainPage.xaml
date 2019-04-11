@@ -9,6 +9,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="230*"/>
+            <RowDefinition Height="407*"/>
+            <RowDefinition Height="200*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Start" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="120" Width="357" FontSize="72"/>
+        <TextBlock HorizontalAlignment="Left" Margin="140,55,0,0" Text="Minesweeper" TextWrapping="Wrap" VerticalAlignment="Top" Height="178" Width="1199" FontSize="99" Grid.RowSpan="2" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="132,85.5,0,0" Grid.Row="1" Text="1. The objective is to place flags on all tiles that are suspected to be bombs as well as uncover all other tiles." TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="1213" FontSize="36" CharacterSpacing="-2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="572,10,0,0" Grid.Row="1" Text="Rules / Instructions:" TextWrapping="Wrap" VerticalAlignment="Top" Height="83" Width="347" FontSize="36" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="132,204.5,0,0" Grid.Row="1" Text="2. If a tile with a bomb is clicked, you lose." TextWrapping="Wrap" VerticalAlignment="Top" Height="74" Width="1192" FontSize="36" SelectionChanged="TextBlock_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="132,284.5,0,0" Grid.Row="1" Text="3. When a tile without a bomb is clicked, a number will appear that informs you how many bomb tiles are touching that specific tile. This includes tiles to the right, left, above, below, and diagonal." TextWrapping="Wrap" VerticalAlignment="Top" Height="154" Width="1168" FontSize="36"/>
 
     </Grid>
 </Page>
