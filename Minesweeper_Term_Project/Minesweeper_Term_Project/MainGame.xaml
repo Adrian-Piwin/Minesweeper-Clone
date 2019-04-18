@@ -157,6 +157,7 @@
         <Image Source=" " Stretch="Uniform" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="10" Grid.RowSpan="10" Width="750" Height="750"/>
 
         <TextBlock Text="Minesweeper" FontWeight="Bold" FontSize="45" TextAlignment="Center" Grid.Column="1" Grid.ColumnSpan="10" FocusVisualPrimaryBrush="#FFFBF7F7" Foreground="#FFF9F6F6"/>
+        <Button x:Name="background_music" Content="Mute Music" Grid.ColumnSpan="2" Grid.Column="5" HorizontalAlignment="Center" Margin="0,137,0,0" Grid.Row="11" VerticalAlignment="Top" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Tapped="Play_music_Tapped" Width="158" FocusVisualSecondaryBrush="#99999696"/>
 
     </Grid>
 </Page>
