@@ -134,6 +134,9 @@
     <None Include="Minesweeper_Term_Project_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bg1.gif" />
+    <Content Include="Assets\bg2.gif" />
+    <Content Include="Assets\no0.png" />
     <Content Include="Assets\bomb.png" />
     <Content Include="Assets\no1.png" />
     <Content Include="Assets\10x10Grid.png" />
