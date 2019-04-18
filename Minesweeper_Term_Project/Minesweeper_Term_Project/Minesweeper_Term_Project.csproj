@@ -134,7 +134,14 @@
     <None Include="Minesweeper_Term_Project_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bomb.png" />
+    <Content Include="Assets\no1.png" />
     <Content Include="Assets\10x10Grid.png" />
+    <Content Include="Assets\no2.png" />
+    <Content Include="Assets\no3.png" />
+    <Content Include="Assets\background.png" />
+    <Content Include="Assets\brick.png" />
+    <Content Include="Assets\flagged.png" />
     <Content Include="Assets\grassBG.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
