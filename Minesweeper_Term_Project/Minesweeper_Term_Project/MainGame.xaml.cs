@@ -57,7 +57,7 @@ namespace Minesweeper_Term_Project
                     img.Source = new BitmapImage(new Uri("ms-appx:///Assets/brick.png"));
                     img.Stretch = Stretch.Uniform;
                     img.Tapped += new TappedEventHandler(OnTap);
-                    img.Tag = $"{rowi-1}{coli-1}";
+                    img.Tag = $"{rowi-1},{coli-1}";
                     Grid.SetColumn(img, coli);
                     Grid.SetRow(img, rowi);
 
@@ -90,7 +90,11 @@ namespace Minesweeper_Term_Project
         {
             // Get object of selected tile
             Image tileObj = sender as Image;
-            byte _tag = Convert.ToByte(tileObj.Tag);
+            string _tag = Convert.ToString(tileObj.Tag);
+            // Position of tile that has been tapped (x,y)
+            string[] pos = _tag.Split(',');
+
+            tileObj.Source = _board.BoardList[int.Parse(pos[0])][int.Parse(pos[1])].TileSourceImage;
         }
 
     }

@@ -106,9 +106,6 @@ namespace Minesweeper_Term_Project
             return shuffledList;
         }
 
-        /// <summary>
-        /// Get method for 2D array of the board list
-        /// </summary>
-        public List<List<string>> BoardList { get; }
+        public List<List<Tile>> BoardList { get { return boardList; } }
     }
 }

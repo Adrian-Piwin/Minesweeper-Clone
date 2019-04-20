@@ -23,10 +23,10 @@ namespace Minesweeper_Term_Project
         private TileType _tileType;
 
         // Image sourse
-        public BitmapImage _tileSourceImage;
+        private BitmapImage _tileSourceImage;
 
         // Number of bombs around this tile
-        public byte _surroundingBombs;
+        private byte _surroundingBombs;
 
         /// <summary>
         /// Constructor for tile
@@ -131,5 +131,7 @@ namespace Minesweeper_Term_Project
         /// Get method for _tileType
         /// </summary>
         public TileType TileType { get { return _tileType; } }
+
+        public BitmapImage TileSourceImage { get { return _tileSourceImage; } }
     }
 }
