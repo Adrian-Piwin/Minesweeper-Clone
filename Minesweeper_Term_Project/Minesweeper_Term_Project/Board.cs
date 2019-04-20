@@ -14,19 +14,23 @@ namespace Minesweeper_Term_Project
 
         private static Random s_randomizer;
 
-        // Size of the board numxnum
-        public static int SIZE_OF_BOARD = 10;
+        private int _boardSize;
 
-        // Diffifculty of game (Percentage of bombs randomly between chosen difficulty + modifier)
-        public static int DIFFICULTY = 10;
+        private int _difficulty;
 
-        public static int DIFFICULTY_MODIFIER = 10;
+        private int _difficultyModifier;
 
         /// <summary>
         /// Constructor for board class
         /// </summary>
-        public Board()
+        public Board(int boardSize, int difficulty, int difficultyModifier)
         {
+            _boardSize = boardSize;
+
+            _difficulty = difficulty;
+
+            _difficultyModifier = difficultyModifier;
+
             boardList = new List<List<Tile>>();
 
             s_randomizer = new Random();
@@ -39,17 +43,17 @@ namespace Minesweeper_Term_Project
         /// </summary>
         private void generateBoard()
         {
-            int boardSize = SIZE_OF_BOARD * SIZE_OF_BOARD;
+            int boardSize = _boardSize * _boardSize;
 
-            int boardDifficulty = s_randomizer.Next(DIFFICULTY, DIFFICULTY_MODIFIER);
+            int boardDifficulty = s_randomizer.Next(_difficulty, _difficultyModifier);
 
-            int tempBomb = boardDifficulty / SIZE_OF_BOARD;
+            int tempBomb = boardDifficulty / _boardSize;
 
             // Add tiles to board list
-            for (int i = 0; i < SIZE_OF_BOARD; i++)
+            for (int i = 0; i < _boardSize; i++)
             {
                 List<Tile> subList = new List<Tile>();
-                for (int ind = 0; ind < SIZE_OF_BOARD; i++)
+                for (int ind = 0; ind < _boardSize; ind++)
                 {
                     if (tempBomb != 0)
                     {
@@ -62,7 +66,7 @@ namespace Minesweeper_Term_Project
                     }
                 }
 
-                tempBomb = boardDifficulty / SIZE_OF_BOARD;
+                tempBomb = boardDifficulty / _boardSize;
 
                 subList = RandomizeTiles(subList);
                 boardList.Add(subList);

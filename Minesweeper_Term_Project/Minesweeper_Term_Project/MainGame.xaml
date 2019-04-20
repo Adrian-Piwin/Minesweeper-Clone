@@ -8,13 +8,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="gameGrid">
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="Assets/bg2.gif"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -25,11 +25,11 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="12*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -40,124 +40,11 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="12*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="1"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="2" Grid.Row="1"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="1"/>
-        <Image Source="Assets/bomb.png" Stretch="Uniform" Grid.Column="4" Grid.Row="1"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="1"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="6" Grid.Row="1"/>
-        <Image Source="Assets/no1.png" Stretch="Uniform" Grid.Column="7" Grid.Row="1"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="1"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="1"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="1"/>
-
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="2"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="2" Grid.Row="2"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="2"/>
-        <Image Source="Assets/bomb.png" Stretch="Uniform" Grid.Column="4" Grid.Row="2"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="2"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="6" Grid.Row="2"/>
-        <Image Source="Assets/no1.png" Stretch="Uniform" Grid.Column="7" Grid.Row="2"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="2"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="2"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="2"/>
-
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="3"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="2" Grid.Row="3"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="3"/>
-        <Image Source="Assets/bomb.png" Stretch="Uniform" Grid.Column="4" Grid.Row="3"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="3"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="6" Grid.Row="3"/>
-        <Image Source="Assets/no3.png" Stretch="Uniform" Grid.Column="7" Grid.Row="3"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="3"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="3"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="3"/>
-
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="4"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="2" Grid.Row="4"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="4"/>
-        <Image Source="Assets/bomb.png" Stretch="Uniform" Grid.Column="4" Grid.Row="4"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="4"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="6" Grid.Row="4"/>
-        <Image Source="Assets/no1.png" Stretch="Uniform" Grid.Column="7" Grid.Row="4"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="4"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="4"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="4"/>
-
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="5"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="2" Grid.Row="5"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="5"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="4" Grid.Row="5"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="5"/>
-        <Image Source="Assets/no0.png" Stretch="Uniform" Grid.Column="6" Grid.Row="5"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="7" Grid.Row="5"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="5"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="5"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="5"/>
-
-
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="6"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="2" Grid.Row="6"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="6"/>
-        <Image Source="Assets/flagged.png" Stretch="Uniform" Grid.Column="4" Grid.Row="6"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="6"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="6" Grid.Row="6"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="7" Grid.Row="6"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="6"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="6"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="6"/>
-
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="7"/>
-        <Image Source="Assets/no2.png" Stretch="Uniform" Grid.Column="2" Grid.Row="7"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="7"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="4" Grid.Row="7"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="7"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="6" Grid.Row="7"/>
-        <Image Source="Assets/no2.png" Stretch="Uniform" Grid.Column="7" Grid.Row="7"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="7"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="7"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="7"/>
-
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="8"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="2" Grid.Row="8"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="8"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="4" Grid.Row="8"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="8"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="6" Grid.Row="8"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="7" Grid.Row="8"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="8"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="8"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="8"/>
-
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="9"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="2" Grid.Row="9"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="9"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="4" Grid.Row="9"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="9"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="6" Grid.Row="9"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="7" Grid.Row="9"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="9"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="9"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="9"/>
-
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="1" Grid.Row="10"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="2" Grid.Row="10"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="3" Grid.Row="10"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="4" Grid.Row="10"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="5" Grid.Row="10"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="6" Grid.Row="10"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="7" Grid.Row="10"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="8" Grid.Row="10"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="9" Grid.Row="10"/>
-        <Image Source="Assets/brick.png" Stretch="Uniform" Grid.Column="10" Grid.Row="10"/>
-
-        <Image Source=" " Stretch="Uniform" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="10" Grid.RowSpan="10" Width="750" Height="750"/>
-
-        <TextBlock Text="Minesweeper" FontWeight="Bold" FontSize="50" VerticalAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.ColumnSpan="10" FocusVisualPrimaryBrush="#FFFBF7F7" Foreground="#FFF9F6F6"/>
-        <Button x:Name="background_music" Content="Mute Music" Grid.ColumnSpan="2" Grid.Column="5" HorizontalAlignment="Center" Margin="0,137,0,0" Grid.Row="11" VerticalAlignment="Top" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Tapped="Play_music_Tapped" Width="158" FocusVisualSecondaryBrush="#99999696"/>
+        <TextBlock Text="Minesweeper" FontWeight="Bold" FontSize="50" VerticalAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="12" FocusVisualPrimaryBrush="#FFFBF7F7" Foreground="#FFF9F6F6"/>
+        <Button x:Name="background_music" Content="Mute Music" Grid.ColumnSpan="6" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="11" VerticalAlignment="Center" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Tapped="Play_music_Tapped" Width="158" FocusVisualSecondaryBrush="#99999696"/>
 
     </Grid>
 </Page>
