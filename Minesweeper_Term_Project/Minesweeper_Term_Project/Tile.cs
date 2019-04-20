@@ -87,39 +87,39 @@ namespace Minesweeper_Term_Project
             switch (_tileType)
             {
                 case TileType.empty:
-                    _tileSourceImage = new BitmapImage();
+                    _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/no0.png"));
                     break;
 
                 case TileType.bomb:
-                    _tileSourceImage = new BitmapImage();
+                    _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/bomb.png"));
                     break;
 
                 case TileType.number:
                     switch (_surroundingBombs)
                     {
                         case 1:
-                            _tileSourceImage = new BitmapImage();
+                            _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/no1.png"));
                             break;
                         case 2:
-                            _tileSourceImage = new BitmapImage();
+                            _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/no2.png"));
                             break;
                         case 3:
-                            _tileSourceImage = new BitmapImage();
+                            _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/no3.png"));
                             break;
                         case 4:
-                            _tileSourceImage = new BitmapImage();
+                            _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/no4.png"));
                             break;
                         case 5:
-                            _tileSourceImage = new BitmapImage();
+                            _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/no5.png"));
                             break;
                         case 6:
-                            _tileSourceImage = new BitmapImage();
+                            _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/no6.png"));
                             break;
                         case 7:
-                            _tileSourceImage = new BitmapImage();
+                            _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/no7.png"));
                             break;
                         case 8:
-                            _tileSourceImage = new BitmapImage();
+                            _tileSourceImage = new BitmapImage(new Uri("ms-appx:///Assets/no8.png"));
                             break;
                     }
                     break;
