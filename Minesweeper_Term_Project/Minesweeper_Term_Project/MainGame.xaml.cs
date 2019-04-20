@@ -94,7 +94,27 @@ namespace Minesweeper_Term_Project
             // Position of tile that has been tapped (x,y)
             string[] pos = _tag.Split(',');
 
-            tileObj.Source = _board.BoardList[int.Parse(pos[0])][int.Parse(pos[1])].TileSourceImage;
+            Tile selectedTile = _board.BoardList[int.Parse(pos[0])][int.Parse(pos[1])];
+
+            tileObj.Source = selectedTile.TileSourceImage;
+            selectedTile.TileStatus = TileStatus.Revealed;
+
+            // Empty space reveal TODO
+            if (selectedTile.TileType == TileType.empty)
+            {
+                List<Tile> tempList = new List<Tile>();
+                tempList = selectedTile.GetTouchingEmptySpaces(_board.BoardList);
+
+                for (int item = 0; item < tempList.Count; item++)
+                {
+                    tempList[item].TileStatus = TileStatus.Revealed;
+                }
+
+                for (int item = 0; item < tempList.Count; item++)
+                {
+                    tempList.Concat(tempList[item].GetTouchingEmptySpaces(_board.BoardList));
+                }
+            }
         }
 
     }

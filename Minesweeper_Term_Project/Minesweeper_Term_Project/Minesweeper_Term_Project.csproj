@@ -120,14 +120,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Board.cs" />
-    <Compile Include="EmptySpace.cs" />
     <Compile Include="MainGame.xaml.cs">
       <DependentUpon>MainGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Number.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tile.cs" />
   </ItemGroup>

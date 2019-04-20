@@ -17,6 +17,12 @@ namespace Minesweeper_Term_Project
         bomb
     }
 
+    enum TileStatus
+    {
+        Revealed,
+        Hidden
+    }
+
     class Tile
     {
         // Type of tile
@@ -28,13 +34,29 @@ namespace Minesweeper_Term_Project
         // Number of bombs around this tile
         private byte _surroundingBombs;
 
+        // Position of tile within the list
+        private string[] _pos;
+        private int _posX;
+        private int _posY;
+
+        // Status of tile
+        private TileStatus _tileStatus;
+
         /// <summary>
         /// Constructor for tile
         /// </summary>
         /// <param name="tileType"></param>
-        public Tile(TileType tileType)
+        public Tile(TileType tileType, string pos)
         {
             _tileType = tileType;
+
+            _pos = pos.Split(',');
+
+            _posX = int.Parse(_pos[0]);
+
+            _posY = int.Parse(_pos[1]);
+
+            _tileStatus = TileStatus.Hidden;
         }
 
         /// <summary>
@@ -77,6 +99,34 @@ namespace Minesweeper_Term_Project
                 _surroundingBombs = bombCount;
             }
 
+        }
+
+        public List<Tile> GetTouchingEmptySpaces(List<List<Tile>> boardList)
+        {
+            List<Tile> emptyTileList = new List<Tile>();
+
+            // Column
+            for (int ind = 0; ind < 3; ind++)
+            {
+                // Row
+                for (int i = 0; i < 3; i++)
+                {
+                    try
+                    {
+                        if (boardList[_posX + 1 - i][_posY + 1 - ind]._tileType == TileType.empty && boardList[_posX + 1 - i][_posY + 1 - ind].TileStatus == TileStatus.Hidden)
+                        {
+                            emptyTileList.Add(boardList[_posX + 1 - i][_posY + 1 - ind]);
+                        }
+                    }
+                    // If checking for tile that does not exist: skip loop
+                    catch (System.ArgumentOutOfRangeException)
+                    {
+                        continue;
+                    }
+                }
+            }
+
+            return emptyTileList;
         }
 
         /// <summary>
@@ -133,5 +183,7 @@ namespace Minesweeper_Term_Project
         public TileType TileType { get { return _tileType; } }
 
         public BitmapImage TileSourceImage { get { return _tileSourceImage; } }
+
+        public TileStatus TileStatus { get { return _tileStatus; } set { _tileStatus = TileStatus; } }
     }
 }

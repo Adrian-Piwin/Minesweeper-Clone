@@ -58,12 +58,12 @@ namespace Minesweeper_Term_Project
                 {
                     if (tempBomb != 0)
                     {
-                        subList.Add(new Tile(TileType.bomb));
+                        subList.Add(new Tile(TileType.bomb, $"{i},{ind}"));
                         tempBomb -= 1;
                     }
                     else
                     {
-                        subList.Add(new Tile(TileType.empty));
+                        subList.Add(new Tile(TileType.empty, $"{i},{ind}"));
                     }
                 }
 
@@ -79,7 +79,7 @@ namespace Minesweeper_Term_Project
                 for (int coli = 0; coli < boardList[rowi].Count; coli++)
                 {
                     boardList[rowi][coli].GetSurroundingBombs(boardList, rowi, coli);
-                    //tile.SetImage();
+                    boardList[rowi][coli].SetImage();
                 }
 
             }
