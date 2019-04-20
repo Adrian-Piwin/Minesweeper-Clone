@@ -73,18 +73,12 @@ namespace Minesweeper_Term_Project
                 boardList.Add(subList);
             }
 
-            // Position within list
-            int counterRow = 0;
-            int counterCol = 0;
-
             // Loop through each tile getting surrounding bombs and setting image
-            foreach (List<Tile> sublist in boardList)
+            for (int rowi = 0; rowi < boardList.Count; rowi++)
             {
-                counterRow += 1;
-                foreach (Tile tile in sublist)
+                for (int coli = 0; coli < boardList[rowi].Count; coli++)
                 {
-                    counterCol += 1;
-                    tile.GetSurroundingBombs(boardList, counterRow, counterCol);
+                    boardList[rowi][coli].GetSurroundingBombs(boardList, rowi, coli);
                     //tile.SetImage();
                 }
 

@@ -69,6 +69,11 @@ namespace Minesweeper_Term_Project
                     }
                 }
 
+                if (bombCount > 0)
+                {
+                    _tileType = TileType.number;
+                }
+
                 _surroundingBombs = bombCount;
             }
 
