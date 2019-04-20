@@ -42,9 +42,36 @@ namespace Minesweeper_Term_Project
         /// Also changing type depending if any bombs are or are not surrounding it
         /// </summary>
         /// <returns></returns>
-        public void GetSurroundingBombs(List<List<Tile>> boardList)
+        public void GetSurroundingBombs(List<List<Tile>> boardList, int rowPos, int colPos)
         {
-            _surroundingBombs = 0;
+            byte bombCount = 0;
+
+            if (boardList[rowPos][colPos]._tileType != TileType.bomb)
+            {
+                // Column
+                for (int ind = 0; ind < 3; ind++)
+                {
+                    // Check row for bombs
+                    for (int i = 0; i < 3; i++)
+                    {
+                        try
+                        {
+                            if (boardList[rowPos + 1 - i][colPos + 1 - ind]._tileType == TileType.bomb)
+                            {
+                                bombCount += 1;
+                            }
+                        }
+                        // If checking for tile that does not exist: skip loop
+                        catch (System.ArgumentOutOfRangeException)
+                        {
+                            continue;
+                        }
+                    }
+                }
+
+                _surroundingBombs = bombCount;
+            }
+
         }
 
         /// <summary>

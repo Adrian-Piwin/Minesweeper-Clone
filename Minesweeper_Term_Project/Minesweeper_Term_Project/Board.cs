@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Minesweeper_Term_Project
 {
@@ -72,16 +73,23 @@ namespace Minesweeper_Term_Project
                 boardList.Add(subList);
             }
 
+            // Position within list
+            int counterRow = 0;
+            int counterCol = 0;
+
             // Loop through each tile getting surrounding bombs and setting image
             foreach (List<Tile> sublist in boardList)
             {
+                counterRow += 1;
                 foreach (Tile tile in sublist)
                 {
-                    tile.GetSurroundingBombs(boardList);
-                    tile.SetImage();
+                    counterCol += 1;
+                    tile.GetSurroundingBombs(boardList, counterRow, counterCol);
+                    //tile.SetImage();
                 }
 
             }
+            Debug.WriteLine(boardList);
         }
 
         /// <summary>
