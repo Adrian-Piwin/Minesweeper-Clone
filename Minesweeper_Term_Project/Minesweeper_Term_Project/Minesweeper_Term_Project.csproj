@@ -120,12 +120,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Board.cs" />
+    <Compile Include="EmptySpace.cs" />
     <Compile Include="MainGame.xaml.cs">
       <DependentUpon>MainGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Number.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tile.cs" />
   </ItemGroup>
@@ -149,6 +151,11 @@
     <Content Include="Assets\brick.png" />
     <Content Include="Assets\flagged.png" />
     <Content Include="Assets\grassBG.jpg" />
+    <Content Include="Assets\no4.png" />
+    <Content Include="Assets\no5.png" />
+    <Content Include="Assets\no6.png" />
+    <Content Include="Assets\no7.png" />
+    <Content Include="Assets\no8.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
