@@ -41,8 +41,6 @@ namespace Minesweeper_Term_Project
 
         private List<Image> _imgControlList;
 
-        private bool flaggedToggle = true;
-
         public MainGame()
         {
             this.InitializeComponent();
@@ -100,15 +98,13 @@ namespace Minesweeper_Term_Project
         private void OnRightTap(object sender, RightTappedRoutedEventArgs e)
         {
             Image tileObj = sender as Image;
-            if (flaggedToggle == true)
+            if (((tileObj).Source as BitmapImage).UriSource.ToString() == "ms-appx:///Assets/brick.png")
             {
                 tileObj.Source = new BitmapImage(new Uri("ms-appx:///Assets/flagged.png"));
-                flaggedToggle = false;
             }
-            else if (flaggedToggle == false)
+            else if (((tileObj).Source as BitmapImage).UriSource.ToString() == "ms-appx:///Assets/flagged.png")
             {
                 tileObj.Source = new BitmapImage(new Uri("ms-appx:///Assets/brick.png"));
-                flaggedToggle = true;
             }
 
 
@@ -121,39 +117,45 @@ namespace Minesweeper_Term_Project
             // Position of tile that has been tapped (x,y)
             string[] pos = _tag.Split(',');
 
-            Tile selectedTile = _board.BoardList[int.Parse(pos[0])][int.Parse(pos[1])];
-
-            tileObj.Source = selectedTile.TileSourceImage;
-            selectedTile.TileStatus = TileStatus.Revealed;
-
-            // Empty space reveal TODO
-            if (selectedTile.TileType == TileType.empty)
+            // Check if tile is brick
+            if (((tileObj).Source as BitmapImage).UriSource.ToString() == "ms-appx:///Assets/brick.png")
             {
-                List<Tile> tempList = new List<Tile>();
-                tempList = selectedTile.GetTouchingEmptySpaces(_board.BoardList);
-                
 
-                for (int item = 0; item < tempList.Count; item++)
-                {
-                    tempList[item].TileStatus = TileStatus.Revealed;
-                }
+                Tile selectedTile = _board.BoardList[int.Parse(pos[0])][int.Parse(pos[1])];
 
-                for (int item = 0; item < tempList.Count; item++)
+                tileObj.Source = selectedTile.TileSourceImage;
+                selectedTile.TileStatus = TileStatus.Revealed;
+
+            
+                // Empty space reveal TODO
+                if (selectedTile.TileType == TileType.empty)
                 {
-                    tempList.Concat(tempList[item].GetTouchingEmptySpaces(_board.BoardList));
-                    
-                    for (int imgItem = 0; imgItem < _imgControlList.Count; imgItem++)
+                    List<Tile> tempList = new List<Tile>();
+                    tempList = selectedTile.GetTouchingEmptySpaces(_board.BoardList);
+
+
+                    for (int item = 0; item < tempList.Count; item++)
                     {
-                        if (_imgControlList[imgItem].Tag.ToString() == $"{tempList[item].GetPosX-1},{tempList[item].GetPosY-1}")
-                        {
-                            _imgControlList[imgItem].Source = tempList[item].TileSourceImage;
-                        }
+                        tempList[item].TileStatus = TileStatus.Revealed;
                     }
-                    
+
+                    for (int item = 0; item < tempList.Count; item++)
+                    {
+                        tempList.Concat(tempList[item].GetTouchingEmptySpaces(_board.BoardList));
+
+                        for (int imgItem = 0; imgItem < _imgControlList.Count; imgItem++)
+                        {
+                            if (_imgControlList[imgItem].Tag.ToString() == $"{tempList[item].GetPosX - 1},{tempList[item].GetPosY - 1}")
+                            {
+                                _imgControlList[imgItem].Source = tempList[item].TileSourceImage;
+                            }
+                        }
 
 
 
 
+
+                    }
                 }
             }
         }
