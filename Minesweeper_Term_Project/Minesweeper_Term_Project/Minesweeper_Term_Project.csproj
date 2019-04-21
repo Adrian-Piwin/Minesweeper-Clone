@@ -136,16 +136,17 @@
     <None Include="Minesweeper_Term_Project_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\bensound-erf.mp3" />
+    <Content Include="Assets\bgm1.mp3" />
     <Content Include="Assets\bg1.gif" />
     <Content Include="Assets\bg2.gif" />
+    <Content Include="Assets\bg3.gif" />
     <Content Include="Assets\no0.png" />
     <Content Include="Assets\bomb.png" />
     <Content Include="Assets\no1.png" />
     <Content Include="Assets\10x10Grid.png" />
     <Content Include="Assets\no2.png" />
     <Content Include="Assets\no3.png" />
-    <Content Include="Assets\background.png" />
+    <Content Include="Assets\background1.png" />
     <Content Include="Assets\brick.png" />
     <Content Include="Assets\flagged.png" />
     <Content Include="Assets\grassBG.jpg" />
@@ -154,6 +155,7 @@
     <Content Include="Assets\no6.png" />
     <Content Include="Assets\no7.png" />
     <Content Include="Assets\no8.png" />
+    <Content Include="Assets\bgm2.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

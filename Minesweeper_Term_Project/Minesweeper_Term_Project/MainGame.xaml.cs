@@ -39,15 +39,16 @@ namespace Minesweeper_Term_Project
 
         private Board _board;
 
+        private List<Image> _imgControlList;
+
+        private bool flaggedToggle = true;
+
         public MainGame()
         {
             this.InitializeComponent();
-            player = new MediaPlayer();
-            playing = true;
 
-            player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/bensound-erf.mp3"));
-
-            player.AutoPlay = true;
+            // Initialize the image control list in XML when images are created.
+            _imgControlList = new List<Image>();
 
             // XAML Create images for grid
             for (int rowi = 1; rowi < SIZE_OF_BOARD+1; rowi++)
@@ -57,17 +58,26 @@ namespace Minesweeper_Term_Project
                     img.Source = new BitmapImage(new Uri("ms-appx:///Assets/brick.png"));
                     img.Stretch = Stretch.Uniform;
                     img.Tapped += new TappedEventHandler(OnTap);
+                    img.RightTapped += new RightTappedEventHandler(OnRightTap);
                     img.Tag = $"{rowi-1},{coli-1}";
                     Grid.SetColumn(img, coli);
                     Grid.SetRow(img, rowi);
 
+                    
                     gameGrid.Children.Add(img);
+                    _imgControlList.Add(img);
                 }
             }
 
             // Create board
             _board = new Board(SIZE_OF_BOARD, DIFFICULTY, DIFFICULTY_MODIFIER);
-            
+
+            player = new MediaPlayer();
+            playing = true;
+
+            player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/bgm2.mp3"));
+
+            player.AutoPlay = true;
         }
 
         private void Play_music_Tapped(object sender, TappedRoutedEventArgs e)
@@ -81,11 +91,28 @@ namespace Minesweeper_Term_Project
             }
             else
             {
-                player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/bensound-erf.mp3"));
+                player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/bgm2.mp3"));
+                background_music.Content = "Mute Music";
                 playing = true;
             }
         }
 
+        private void OnRightTap(object sender, RightTappedRoutedEventArgs e)
+        {
+            Image tileObj = sender as Image;
+            if (flaggedToggle == true)
+            {
+                tileObj.Source = new BitmapImage(new Uri("ms-appx:///Assets/flagged.png"));
+                flaggedToggle = false;
+            }
+            else if (flaggedToggle == false)
+            {
+                tileObj.Source = new BitmapImage(new Uri("ms-appx:///Assets/brick.png"));
+                flaggedToggle = true;
+            }
+
+
+        }
         private void OnTap(object sender, TappedRoutedEventArgs e)
         {
             // Get object of selected tile
@@ -104,6 +131,7 @@ namespace Minesweeper_Term_Project
             {
                 List<Tile> tempList = new List<Tile>();
                 tempList = selectedTile.GetTouchingEmptySpaces(_board.BoardList);
+                
 
                 for (int item = 0; item < tempList.Count; item++)
                 {
@@ -113,6 +141,19 @@ namespace Minesweeper_Term_Project
                 for (int item = 0; item < tempList.Count; item++)
                 {
                     tempList.Concat(tempList[item].GetTouchingEmptySpaces(_board.BoardList));
+                    
+                    for (int imgItem = 0; imgItem < _imgControlList.Count; imgItem++)
+                    {
+                        if (_imgControlList[imgItem].Tag.ToString() == $"{tempList[item].GetPosX-1},{tempList[item].GetPosY-1}")
+                        {
+                            _imgControlList[imgItem].Source = tempList[item].TileSourceImage;
+                        }
+                    }
+                    
+
+
+
+
                 }
             }
         }

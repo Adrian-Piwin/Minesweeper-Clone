@@ -182,8 +182,24 @@ namespace Minesweeper_Term_Project
         /// </summary>
         public TileType TileType { get { return _tileType; } }
 
-        public BitmapImage TileSourceImage { get { return _tileSourceImage; } }
+        public BitmapImage TileSourceImage { get { return _tileSourceImage; } set { _tileSourceImage = value; } }
 
         public TileStatus TileStatus { get { return _tileStatus; } set { _tileStatus = TileStatus; } }
+
+        public int GetPosX
+        {
+            get
+            {
+                return _posX;
+            }
+        }
+
+        public int GetPosY
+        {
+            get
+            {
+                return _posY;
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@
 
     <Grid x:Name="gameGrid">
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="Assets/bg2.gif"/>
+            <ImageBrush Stretch="UniformToFill" ImageSource="Assets/bg3.gif"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
