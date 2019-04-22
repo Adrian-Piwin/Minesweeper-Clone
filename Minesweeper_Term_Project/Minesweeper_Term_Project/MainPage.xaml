@@ -8,16 +8,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="mainGrid">
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="Assets/bg3.gif"/>
         </Grid.Background>
 
-        <StackPanel Margin="10,10,0,0">
-            <TextBlock HorizontalAlignment="Center" Text="Minesweeper" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="100" FontWeight="Bold" TextAlignment="Center" Margin="0,30,0,30"/>
-            <Button Content="Start" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height="120" Width="350" FontSize="72" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Click="OnStart" Margin="0,0,0,30"/>
-            <Button Content="How To Play" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height="120" Width="350" FontSize="50" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Click="OnCheckingHowToPlay" Margin="0,0,0,30"/>
-            <Button Content="Exit" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height="120" Width="350" FontSize="72" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Click="OnExit"/>
+        <StackPanel x:Name="MainStack" Margin="10,10,0,0">
+            <TextBlock HorizontalAlignment="Center" Text="Minesweeper" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="100" FontWeight="Bold" TextAlignment="Center" Margin="0,30,0,150"/>
+            <Button Content="Start" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height=" 100" Width="350" FontSize="50" Background="#40EFF2ED" Foreground="#FFFFFFFF" Click="OnStart" Margin="0,0,0,30" />
+            <Button Content="Rules" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height="100" Width="350" FontSize="50" Background="#40EFF2ED" Foreground="#FFFFFFFF" Click="OnCheckingHowToPlay" Margin="0,0,0,30"/>
+            <Button Content="Exit" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height="100" Width="350" FontSize="50" Background="#40EFF2ED" Foreground="#FFFFFFFF" Click="OnExit"/>
         </StackPanel>
 
 

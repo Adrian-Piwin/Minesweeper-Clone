@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Imaging;
+using System.Diagnostics;
 
 namespace Minesweeper_Term_Project
 {
@@ -26,7 +27,7 @@ namespace Minesweeper_Term_Project
     class Tile
     {
         // Type of tile
-        private TileType _tileType;
+        public TileType _tileType;
 
         // Image sourse
         private BitmapImage _tileSourceImage;
@@ -101,32 +102,100 @@ namespace Minesweeper_Term_Project
 
         }
 
-        public List<Tile> GetTouchingEmptySpaces(List<List<Tile>> boardList)
+        public Tuple<List<Tile>, List<Tile>> GetTouchingEmptySpaces(List<List<Tile>> boardList, List<Tile> emptyTileList)
         {
-            List<Tile> emptyTileList = new List<Tile>();
+            List<Tile> numberTileList = new List<Tile>();
 
-            // Column
-            for (int ind = 0; ind < 3; ind++)
+            int counter = 1;
+
+            int listPos = 0;
+
+            for (; listPos < emptyTileList.Count; listPos++)
             {
-                // Row
-                for (int i = 0; i < 3; i++)
+                int posX = emptyTileList[listPos].GetPosX;
+                int posY = emptyTileList[listPos].GetPosY;
+
+                // UP
+                try
                 {
-                    try
+                    Tile currectTile = boardList[posY - counter][posX];
+                    if (currectTile.TileType == TileType.empty && currectTile._tileStatus == TileStatus.Hidden)
                     {
-                        if (boardList[_posX + 1 - i][_posY + 1 - ind]._tileType == TileType.empty && boardList[_posX + 1 - i][_posY + 1 - ind].TileStatus == TileStatus.Hidden)
-                        {
-                            emptyTileList.Add(boardList[_posX + 1 - i][_posY + 1 - ind]);
-                        }
+                        currectTile._tileStatus = TileStatus.Revealed;
+                        emptyTileList.Add(currectTile);
                     }
-                    // If checking for tile that does not exist: skip loop
-                    catch (System.ArgumentOutOfRangeException)
+                    else if (currectTile.TileType == TileType.number && currectTile._tileStatus == TileStatus.Hidden)
                     {
-                        continue;
+                        currectTile._tileStatus = TileStatus.Revealed;
+                        numberTileList.Add(currectTile);
                     }
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                }
+
+                // Down
+                try
+                {
+                    Tile currectTile = boardList[posY + counter][posX];
+
+                    if (currectTile.TileType == TileType.empty && currectTile._tileStatus == TileStatus.Hidden)
+                    {
+                        currectTile._tileStatus = TileStatus.Revealed;
+                        emptyTileList.Add(currectTile);
+                    }
+                    else if (currectTile.TileType == TileType.number && currectTile._tileStatus == TileStatus.Hidden)
+                    {
+                        currectTile._tileStatus = TileStatus.Revealed;
+                        numberTileList.Add(currectTile);
+                    }
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                }
+
+                // Right
+                try
+                {
+                    Tile currectTile = boardList[posY][posX + counter];
+
+                    if (currectTile.TileType == TileType.empty && currectTile._tileStatus == TileStatus.Hidden)
+                    {
+                        currectTile._tileStatus = TileStatus.Revealed;
+                        emptyTileList.Add(currectTile);
+                    }
+                    else if (currectTile.TileType == TileType.number && currectTile._tileStatus == TileStatus.Hidden)
+                    {
+                        currectTile._tileStatus = TileStatus.Revealed;
+                        numberTileList.Add(currectTile);
+                    }
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                }
+
+                // Left
+                try
+                {
+                    Tile currectTile = boardList[posY][posX - counter];
+
+                    if (currectTile.TileType == TileType.empty && currectTile._tileStatus == TileStatus.Hidden)
+                    {
+                        currectTile._tileStatus = TileStatus.Revealed;
+                        emptyTileList.Add(currectTile);
+                    }
+                    else if (currectTile.TileType == TileType.number && currectTile._tileStatus == TileStatus.Hidden)
+                    {
+                        currectTile._tileStatus = TileStatus.Revealed;
+                        numberTileList.Add(currectTile);
+                    }
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
                 }
             }
 
-            return emptyTileList;
+            return Tuple.Create(emptyTileList,numberTileList);
         }
 
         /// <summary>
@@ -177,10 +246,7 @@ namespace Minesweeper_Term_Project
             }
         }
 
-        /// <summary>
-        /// Get method for _tileType
-        /// </summary>
-        public TileType TileType { get { return _tileType; } }
+        public TileType TileType { get { return _tileType; } set { _tileType = TileType; } }
 
         public BitmapImage TileSourceImage { get { return _tileSourceImage; } set { _tileSourceImage = value; } }
 

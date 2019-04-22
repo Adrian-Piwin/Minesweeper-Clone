@@ -126,35 +126,68 @@ namespace Minesweeper_Term_Project
                 tileObj.Source = selectedTile.TileSourceImage;
                 selectedTile.TileStatus = TileStatus.Revealed;
 
-            
-                // Empty space reveal TODO
+                // If bomb is clicked, reveal all other bombs and end game
+                if (selectedTile.TileType == TileType.bomb)
+                {
+                    //RevealBombs();
+                }
+
+
+                // Empty space reveal
+                
                 if (selectedTile.TileType == TileType.empty)
                 {
                     List<Tile> tempList = new List<Tile>();
-                    tempList = selectedTile.GetTouchingEmptySpaces(_board.BoardList);
+                    List<Tile> tempNumList = new List<Tile>();
+                    tempList.Add(selectedTile);
+                    Tuple<List<Tile>,List<Tile>> listTuple = selectedTile.GetTouchingEmptySpaces(_board.BoardList, tempList);
 
+                    tempList = listTuple.Item1;
+                    tempNumList = listTuple.Item2;
 
-                    for (int item = 0; item < tempList.Count; item++)
+                    // Empty spaces
+                    for (int item = 1; item < tempList.Count; item++)
                     {
-                        tempList[item].TileStatus = TileStatus.Revealed;
-                    }
-
-                    for (int item = 0; item < tempList.Count; item++)
-                    {
-                        tempList.Concat(tempList[item].GetTouchingEmptySpaces(_board.BoardList));
-
                         for (int imgItem = 0; imgItem < _imgControlList.Count; imgItem++)
                         {
-                            if (_imgControlList[imgItem].Tag.ToString() == $"{tempList[item].GetPosX - 1},{tempList[item].GetPosY - 1}")
+                            if (_imgControlList[imgItem].Tag.ToString() == $"{tempList[item].GetPosY},{tempList[item].GetPosX}")
                             {
                                 _imgControlList[imgItem].Source = tempList[item].TileSourceImage;
                             }
                         }
+                    }
 
+                    for (int item = 0; item < tempNumList.Count; item++)
+                    {
+                        for (int imgItem = 0; imgItem < _imgControlList.Count; imgItem++)
+                        {
+                            if (_imgControlList[imgItem].Tag.ToString() == $"{tempNumList[item].GetPosY},{tempNumList[item].GetPosX}")
+                            {
+                                _imgControlList[imgItem].Source = tempNumList[item].TileSourceImage;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
-
-
-
+        private void RevealBombs()
+        {
+            foreach (List<Tile> itemList in _board.BoardList)
+            {
+                foreach (Tile item in itemList)
+                {
+                    if (item.TileType == TileType.bomb)
+                    {
+                        item.TileStatus = TileStatus.Revealed;
+                        foreach (Image img in _imgControlList)
+                        {
+                            if (img.Tag.ToString() == $"{item.GetPosX},{item.GetPosY}")
+                            {
+                                img.Source = item.TileSourceImage;
+                                break;
+                            }
+                        }
                     }
                 }
             }

@@ -44,9 +44,7 @@ namespace Minesweeper_Term_Project
         /// </summary>
         private void generateBoard()
         {
-            int boardSize = _boardSize * _boardSize;
-
-            int boardDifficulty = s_randomizer.Next(_difficulty, _difficultyModifier);
+            int boardDifficulty = s_randomizer.Next(_difficulty, _difficulty + _difficultyModifier);
 
             int tempBomb = boardDifficulty / _boardSize;
 
@@ -56,20 +54,10 @@ namespace Minesweeper_Term_Project
                 List<Tile> subList = new List<Tile>();
                 for (int ind = 0; ind < _boardSize; ind++)
                 {
-                    if (tempBomb != 0)
-                    {
-                        subList.Add(new Tile(TileType.bomb, $"{i},{ind}"));
-                        tempBomb -= 1;
-                    }
-                    else
-                    {
-                        subList.Add(new Tile(TileType.empty, $"{i},{ind}"));
-                    }
+                    subList.Add(new Tile(TileType.empty, $"{ind},{i}"));
                 }
 
-                tempBomb = boardDifficulty / _boardSize;
-
-                subList = RandomizeTiles(subList);
+                subList = RandomizeTiles(subList, tempBomb);
                 boardList.Add(subList);
             }
 
@@ -87,23 +75,21 @@ namespace Minesweeper_Term_Project
         }
 
         /// <summary>
-        /// Random tiles in list
+        /// Set random tiles to bomb type
         /// </summary>
         /// <param name="tileList"></param>
-        public List<Tile> RandomizeTiles(List<Tile> tileList)
+        public List<Tile> RandomizeTiles(List<Tile> tileList, int bombCount)
         {
-            List<Tile> shuffledList = new List<Tile>();
 
-            // randomly remove items from first list
-            // and add them to the second list
-            while (tileList.Count > 0)
+            while (bombCount > 0)
             {
                 int index = s_randomizer.Next(tileList.Count);
-                shuffledList.Add(tileList[index]);
-                tileList.RemoveAt(index);
+                tileList[index]._tileType = TileType.bomb;
+
+                bombCount -= 1;
             }
 
-            return shuffledList;
+            return tileList;
         }
 
         public List<List<Tile>> BoardList { get { return boardList; } }

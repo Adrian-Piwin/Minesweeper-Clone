@@ -25,9 +25,9 @@ namespace Minesweeper_Term_Project
     public sealed partial class MainPage : Page
     {
 
-        string rule1 = "1.The objective is to place flags on all tiles that are suspected to be bombs as well as uncover all other tiles.";
-        string rule2 = "2. If a tile with a bomb is clicked, you lose.";
-        string rule3 = "3. When a tile without a bomb is clicked, a number will appear that informs you how many bomb tiles are touching that specific tile. This includes tiles to the right, left, above, below, and diagonal.";
+        string rule1 = "The objective is to place flags on all tiles that are suspected to be bombs as well as uncover all other tiles.";
+        string rule2 = "If a tile with a bomb is clicked, you lose.";
+        string rule3 = "When a tile without a bomb is clicked, a number will appear that informs you how many bomb tiles are touching that specific tile. This includes tiles to the right, left, above, below, and diagonal.";
 
 
         public MainPage()
@@ -42,6 +42,16 @@ namespace Minesweeper_Term_Project
         /// <param name="e"></param>
         private void OnStart(object sender, RoutedEventArgs e)
         {
+            MainStack.Visibility = Visibility.Collapsed;
+            TextBlock loading = new TextBlock();
+
+            loading.Text = "Loading...";
+            loading.FontSize = 50;
+            loading.VerticalAlignment = VerticalAlignment.Center;
+            loading.HorizontalAlignment = HorizontalAlignment.Center;
+
+            mainGrid.Children.Add(loading);
+
             this.Frame.Navigate(typeof(MainGame));
         }
 
@@ -50,7 +60,7 @@ namespace Minesweeper_Term_Project
             ContentDialog howToPlayDialog = new ContentDialog
             {
                 Title = "Rules / Instructions:",
-                Content = $"{rule1} \n {rule2} \n {rule3}",
+                Content = $"\n{rule1}\n\n{rule2}\n\n{rule3}",
                 CloseButtonText = "Ok"
             };
 
