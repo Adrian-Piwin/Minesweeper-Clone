@@ -9,18 +9,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="230*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="200*"/>
-        </Grid.RowDefinitions>
-        <Button Content="Start" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height="120" Width="350" FontSize="72" Click="OnStart"/>
-        <TextBlock HorizontalAlignment="Center" Text="Minesweeper" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="100" FontWeight="Bold" TextAlignment="Center"/>
-        <StackPanel Grid.Row="1" Margin="100,0,100,0">
-            <TextBlock Grid.Row="1" Text="Rules / Instructions:" TextWrapping="Wrap" FontSize="36" TextAlignment="Center" Margin="0,0,0,15"/>
-            <TextBlock Grid.Row="1" Text="1. The objective is to place flags on all tiles that are suspected to be bombs as well as uncover all other tiles." TextWrapping="Wrap" FontSize="36" Margin="0,0,0,15"/>
-            <TextBlock Grid.Row="1" Text="2. If a tile with a bomb is clicked, you lose." TextWrapping="Wrap" FontSize="36" Margin="0,0,0,15"/>
-            <TextBlock Grid.Row="1" Text="3. When a tile without a bomb is clicked, a number will appear that informs you how many bomb tiles are touching that specific tile. This includes tiles to the right, left, above, below, and diagonal." TextWrapping="Wrap" FontSize="36" />
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="Assets/bg3.gif"/>
+        </Grid.Background>
+
+        <StackPanel Margin="10,10,0,0">
+            <TextBlock HorizontalAlignment="Center" Text="Minesweeper" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="100" FontWeight="Bold" TextAlignment="Center" Margin="0,30,0,30"/>
+            <Button Content="Start" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height="120" Width="350" FontSize="72" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Click="OnStart" Margin="0,0,0,30"/>
+            <Button Content="How To Play" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height="120" Width="350" FontSize="50" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Click="OnCheckingHowToPlay" Margin="0,0,0,30"/>
+            <Button Content="Exit" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Height="120" Width="350" FontSize="72" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Click="OnExit"/>
         </StackPanel>
+
+
     </Grid>
 </Page>

@@ -24,6 +24,12 @@ namespace Minesweeper_Term_Project
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        string rule1 = "1.The objective is to place flags on all tiles that are suspected to be bombs as well as uncover all other tiles.";
+        string rule2 = "2. If a tile with a bomb is clicked, you lose.";
+        string rule3 = "3. When a tile without a bomb is clicked, a number will appear that informs you how many bomb tiles are touching that specific tile. This includes tiles to the right, left, above, below, and diagonal.";
+
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -37,6 +43,23 @@ namespace Minesweeper_Term_Project
         private void OnStart(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainGame));
+        }
+
+        private async void OnCheckingHowToPlay(object sender, RoutedEventArgs e)
+        {
+            ContentDialog howToPlayDialog = new ContentDialog
+            {
+                Title = "Rules / Instructions:",
+                Content = $"{rule1} \n {rule2} \n {rule3}",
+                CloseButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await howToPlayDialog.ShowAsync();
+        }
+
+        private void OnExit(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
         }
     }
 }
