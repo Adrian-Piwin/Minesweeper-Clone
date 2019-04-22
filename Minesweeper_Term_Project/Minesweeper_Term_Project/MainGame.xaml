@@ -44,9 +44,13 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Minesweeper" FontWeight="Bold" FontSize="50" VerticalAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="12" FocusVisualPrimaryBrush="#FFFBF7F7" Foreground="#FFF9F6F6"/>
-        <Button x:Name="background_music" Content="Mute Music" Grid.ColumnSpan="6" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="11" VerticalAlignment="Center" Background="#FFEFF2ED" FocusVisualPrimaryBrush="#FF0E0101" Foreground="#FF110000" BorderBrush="#FF908E8E" Tapped="Play_music_Tapped" Width="158" FocusVisualSecondaryBrush="#99999696"/>
+        <StackPanel Grid.ColumnSpan="6" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="11">
+            <Button x:Name="background_music" Content="Mute Music"  Background="#40EFF2ED" Foreground="#FFFFFFFF" Tapped="Play_music_Tapped" Width="150" Margin="0,0,0,20"/>
+            <Button x:Name="pause_button" Content="Pause" Width="150" Margin="0,0,0,20"/>
+            <Button x:Name="back_button" Content="Quit" Width="150"/>
+        </StackPanel>
+        <TextBlock x:Name="timer_display" Text="Time: " Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="0" FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <TextBlock x:Name="bomb_display" Text="Bombs: " Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="0" FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
 
-        
-        
     </Grid>
 </Page>
