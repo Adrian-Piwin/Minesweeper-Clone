@@ -165,7 +165,7 @@ namespace Minesweeper_Term_Project
                 // If bomb is clicked, reveal all other bombs and end game
                 if (selectedTile.TileType == TileType.bomb)
                 {
-                    //RevealBombs();
+                    RevealBombs();
                 }
 
 
