@@ -16,6 +16,7 @@ using Windows.Media.Playback;
 using Windows.Media.Core;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Diagnostics;
+using System.Threading;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -130,11 +131,11 @@ namespace Minesweeper_Term_Project
                 if (selectedTile.TileType == TileType.bomb)
                 {
                     //RevealBombs();
+
                 }
 
 
                 // Empty space reveal
-                
                 if (selectedTile.TileType == TileType.empty)
                 {
                     List<Tile> tempList = new List<Tile>();
@@ -171,6 +172,9 @@ namespace Minesweeper_Term_Project
             }
         }
 
+        /// <summary>
+        /// Reveals all bombs on the board
+        /// </summary>
         private void RevealBombs()
         {
             foreach (List<Tile> itemList in _board.BoardList)
@@ -191,6 +195,45 @@ namespace Minesweeper_Term_Project
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Checks if the game is won
+        /// </summary>
+        private bool CheckWinner()
+        {
+            for (int row = 0; row < _board.BoardList.Count; row++)
+            {
+                for (int col = 0; col < _board.BoardList[row].Count; col++)
+                {
+                    Tile currentTile = _board.BoardList[row][col];
+                    if (currentTile.TileStatus == TileStatus.Hidden && currentTile._tileType != TileType.bomb)
+                    {
+                        // Something that is not a bomb is still hidden - game not won/lost yet
+                        return false;
+                    }
+                }
+            }
+
+            // Everything that is not a bomb is revealed - game won
+            return true;
+        }
+
+        private void EndGame(bool result)
+        {
+            string message;
+
+            // Game is won
+            if (result)
+            {
+                message = "Congratulations you won!";
+            }
+            // Game is lost
+            else
+            {
+                message = "You lost!";
+            }
+            
         }
 
     }
