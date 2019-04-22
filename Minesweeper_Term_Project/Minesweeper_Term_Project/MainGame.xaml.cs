@@ -111,6 +111,7 @@ namespace Minesweeper_Term_Project
         }
         private void OnTap(object sender, TappedRoutedEventArgs e)
         {
+            Debug.WriteLine(_board.BoardList.Count().ToString());
             // Get object of selected tile
             Image tileObj = sender as Image;
             string _tag = Convert.ToString(tileObj.Tag);
@@ -129,7 +130,7 @@ namespace Minesweeper_Term_Project
                 // If bomb is clicked, reveal all other bombs and end game
                 if (selectedTile.TileType == TileType.bomb)
                 {
-                    //RevealBombs();
+                    RevealBombs();
                 }
 
 
@@ -173,18 +174,20 @@ namespace Minesweeper_Term_Project
 
         private void RevealBombs()
         {
-            foreach (List<Tile> itemList in _board.BoardList)
+
+            for (int i =0; i< _board.BoardList.Count(); i++)
             {
-                foreach (Tile item in itemList)
+                 for (int j =0; j < _board.BoardList[i].Count(); j++)
                 {
-                    if (item.TileType == TileType.bomb)
+                   if( _board.BoardList[i][j].TileType == TileType.bomb)
                     {
-                        item.TileStatus = TileStatus.Revealed;
-                        foreach (Image img in _imgControlList)
+                        _board.BoardList[i][j].TileStatus = TileStatus.Revealed;
+                        for (int k = 0; k< _imgControlList.Count; k++)
                         {
-                            if (img.Tag.ToString() == $"{item.GetPosX},{item.GetPosY}")
+                            if (_imgControlList[k].Tag.ToString() == $"{ _board.BoardList[i][j].GetPosY},{ _board.BoardList[i][j].GetPosX}")
                             {
-                                img.Source = item.TileSourceImage;
+                                _imgControlList[k].Source = _board.BoardList[i][j].TileSourceImage;
+                                Debug.WriteLine(_imgControlList[k].Tag.ToString());
                                 break;
                             }
                         }
