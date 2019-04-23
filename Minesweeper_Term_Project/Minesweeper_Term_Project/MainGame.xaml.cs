@@ -32,10 +32,8 @@ namespace Minesweeper_Term_Project
         // Size of the board numxnum
         private const int SIZE_OF_BOARD = 10;
 
-        // Diffifculty of game (Percentage of bombs randomly between chosen difficulty + modifier)
+        // Diffifculty of game 
         private const int DIFFICULTY = 10;
-
-        private const int DIFFICULTY_MODIFIER = 10;
 
         private Board _board;
 
@@ -76,7 +74,7 @@ namespace Minesweeper_Term_Project
             }
 
             // Create board
-            _board = new Board(SIZE_OF_BOARD, DIFFICULTY, DIFFICULTY_MODIFIER);
+            _board = new Board(SIZE_OF_BOARD, DIFFICULTY);
 
             player = new MediaPlayer();
             playing = true;
@@ -93,6 +91,7 @@ namespace Minesweeper_Term_Project
 
             // Bomb remaining count
             MineSweeperBombs();
+
         }
 
         /// <summary>
@@ -166,6 +165,13 @@ namespace Minesweeper_Term_Project
                 if (selectedTile.TileType == TileType.bomb)
                 {
                     RevealBombs();
+                    EndGame(false);
+                }
+
+                // Check for winner
+                if (CheckWinner())
+                {
+                    EndGame(true);
                 }
 
 
@@ -263,8 +269,8 @@ namespace Minesweeper_Term_Project
         {
             gameTimer.Stop();
 
-            string message;
-            string message2;
+            string message = "";
+            string message2 = "";
 
             // Game is won
             if (winner)
@@ -276,12 +282,15 @@ namespace Minesweeper_Term_Project
             else
             {
                 message = "You lost!";
-                message2 = $"Highscore: {highscore}";
+                if (highscore != 0)
+                {
+                    message2 = $"Highscore: {highscore}";
+                }
 
             }
 
             // Update high score
-            if (score < highscore)
+            if (score > highscore)
             {
                 highscore = score;
             }
@@ -321,8 +330,12 @@ namespace Minesweeper_Term_Project
 
         private void MineSweeperBombs()
         {
-            bomb_display.Text = $"Bombs: {_board.BoardDifficulty - flaggedCount}";
+            bomb_display.Text = $"Bombs: {_board.Difficulty - flaggedCount}";
         }
 
+        private void On_Exit(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
     }
 }

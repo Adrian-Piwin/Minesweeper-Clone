@@ -19,26 +19,18 @@ namespace Minesweeper_Term_Project
 
         private int _difficulty;
 
-        private int _difficultyModifier;
-
-        private int _boardDifficulty;
-
         /// <summary>
         /// Constructor for board class
         /// </summary>
-        public Board(int boardSize, int difficulty, int difficultyModifier)
+        public Board(int boardSize, int difficulty)
         {
             _boardSize = boardSize;
 
             _difficulty = difficulty;
 
-            _difficultyModifier = difficultyModifier;
-
             boardList = new List<List<Tile>>();
 
             s_randomizer = new Random();
-
-            _boardDifficulty = s_randomizer.Next(_difficulty, _difficulty + _difficultyModifier);
 
             generateBoard();
         }
@@ -48,7 +40,6 @@ namespace Minesweeper_Term_Project
         /// </summary>
         private void generateBoard()
         {
-            int tempBomb = _boardDifficulty / _boardSize;
 
             // Add tiles to board list
             for (int i = 0; i < _boardSize; i++)
@@ -59,7 +50,7 @@ namespace Minesweeper_Term_Project
                     subList.Add(new Tile(TileType.empty, $"{ind},{i}"));
                 }
 
-                subList = RandomizeTiles(subList, tempBomb);
+                subList = RandomizeTiles(subList, _difficulty / _boardSize);
                 boardList.Add(subList);
             }
 
@@ -96,6 +87,6 @@ namespace Minesweeper_Term_Project
 
         public List<List<Tile>> BoardList { get { return boardList; } }
 
-        public int BoardDifficulty { get { return _boardDifficulty; } }
+        public int Difficulty { get { return _difficulty; } }
     }
 }
